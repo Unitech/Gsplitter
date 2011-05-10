@@ -1,0 +1,27 @@
+<style type="text/css">
+body {
+  min-width:357px;
+  overflow-x:hidden;
+}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+  if (localStorage["state"] == undefined){
+  localStorage["state"] = 1;
+  localStorage["instantOpen"] = 0;
+  localStorage["smoothInstant"] = 1;
+ }
+       chrome.tabs.executeScript(null, {file: "content_script.js"});
+       chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+              if (request.method == "getLastUrl")
+                  sendResponse({lastUrl: localStorage['lastUrl']});
+              else if (request.method == "setLastUrl")
+                  localStorage['lastUrl'] = request.url;
+              else if (request.method == "getInstant")
+                 sendResponse({status: localStorage['instantOpen']});
+              else if (request.method == "getSmooth")
+                 sendResponse({status: localStorage['smoothInstant']});
+              else if (request.method == "getState")
+                           sendResponse({status: localStorage['state']});
+       });
+</script>

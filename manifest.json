@@ -1,0 +1,29 @@
+{
+  "name": "Gsplitter",
+  "home_page" : "http://blog.hemca.com",
+  "version": "1.51",
+  "description": "Split Chrome in two panels and allows you to have an extended preview of Google search results.",
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_title" : "G-Splitter",
+  "popup" : "options.html"
+  },
+  "icons": { "16": "images/16-gsplitter.png",
+           "48": "images/48-gsplitter.png",
+          "128": "images/128-gsplitter.png" },
+  "authors" : [{
+		"name" : "Strzelewicz Alexandre",
+		"email" : "strzel_a@hemca.com"
+		}],
+  "background_page" : "background.html",
+  "content_scripts" : [{
+                  "all_frames": true,
+		  "matches": ["http://*/search*"],
+		  "js": ["jquery.js", "content_script.js"],
+		  "run_at" : "document_start"
+		  }],
+  "permissions": [
+  		 "tabs",
+		 "http://*/*"
+	]
+}

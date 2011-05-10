@@ -1,0 +1,103 @@
+<html>
+<head>
+<script type="text/javascript">
+function loadOptions(){
+ localStorage["lastUrl"] = "http://www.hemca.com/split/";
+var t = document.getElementById("switcher");
+ if (localStorage["state"] == 0){
+t.setAttribute("style", "background-color: red;");
+t.innerHTML = "<center id=\"textswitch\">Switch ON</center>";
+}else{
+t.setAttribute("style", "background-color: blue;");
+t.innerHTML = "<center id=\"textswitch\">Switch OFF</center>";}
+
+var tev = document.getElementById("autoExpand");
+ if (localStorage["instantOpen"] == 0){
+tev.setAttribute("style", "background-color: red;");
+tev.innerHTML = "<center id=\"textswitch\">Switch ON</center>";
+}else{
+tev.setAttribute("style", "background-color: blue;");
+tev.innerHTML = "<center id=\"textswitch\">Switch OFF</center>";
+}
+
+var t = document.getElementById("smoothExpand");
+ if (localStorage["smoothInstant"] == 0){
+t.setAttribute("style", "background-color: red;");
+t.innerHTML = "<center id=\"textswitch\">Switch ON</center>";
+}else{
+t.setAttribute("style", "background-color: blue;");
+t.innerHTML = "<center id=\"textswitch\">Switch OFF</center>";}
+
+}
+/************* END **************/
+
+function switchswitcher(){
+var t = document.getElementById("switcher");
+if (localStorage["state"] == 0){
+localStorage["state"] = 1;
+t.setAttribute("style", "background-color: blue;");
+t.innerHTML = "<center id=\"textswitch\">Switch OFF</center>";
+}else{
+localStorage["state"] = 0;
+t.setAttribute("style", "background-color: red;");
+t.innerHTML = "<center id=\"textswitch\">Switch ON</center>";
+}}
+ 
+function switchswitcherInstant(){
+var te = document.getElementById("autoExpand");
+if (localStorage["instantOpen"] == 0){
+localStorage["instantOpen"] = 1;
+te.setAttribute("style", "background-color: blue;");
+te.innerHTML = "<center id=\"textswitch\">Switch OFF</center>";
+}else{
+localStorage["instantOpen"] = 0;
+te.setAttribute("style", "background-color: red;");
+te.innerHTML = "<center id=\"textswitch\">Switch ON</center>";
+}}
+
+function switchswitcherSmooth(){
+var t = document.getElementById("smoothExpand");
+if (localStorage["smoothInstant"] == 0){
+localStorage["smoothInstant"] = 1;
+t.setAttribute("style", "background-color: blue;");
+t.innerHTML = "<center id=\"textswitch\">Switch OFF</center>";
+}else{
+localStorage["smoothInstant"] = 0;
+t.setAttribute("style", "background-color: red;");
+t.innerHTML = "<center id=\"textswitch\">Switch ON</center>";
+}}
+
+</script>
+<style type="text/css">
+body{text-align : center; font-size : 0.9em; font-family: arial, sans-serif; overflow-x:hidden;min-width : 260px;margin-bottom : 50px;}
+#bar{height : 1px;width : 100%; background-color : #bcd2f9;}
+#textswitch{
+margin-top: 8px;
+font-weight : bold;
+}
+.switcher{
+margin-left : auto;
+margin-right : auto;
+border : 1px solid black;
+width : 75px;
+height : 30px;
+float : center;
+opacity : 0.4;
+color : white;
+font-size : 12px;
+}
+</style>
+  <script type="text/javascript" src="options.js"></script>  
+
+</head>
+<body onload="loadOptions()">
+  <div id="bar"></div><br/>
+  <center><strong><a>Gsplitter</a></strong></center><br/>
+  <a>Gsplitter :<nobr><div id="switcher" class="switcher"  onclick="switchswitcher()"></div></a><br/>
+  <a>Expand auto :<div id="autoExpand" class="switcher" onclick="switchswitcherInstant()"></div></a><br/>
+  <a>Smooth expand :<div id="smoothExpand" class="switcher" onclick="switchswitcherSmooth()"></div></a><br/>
+
+  <p><strong>Then refresh page </strong><img src="images/view-refresh.png"></p>
+  <div id="bar" style="position:absolute; bottom:6px;"></div>
+</body>
+</html>
